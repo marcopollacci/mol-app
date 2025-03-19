@@ -43,6 +43,8 @@ describe('ClientsService', () => {
       ];
       const mockResponse = of(mockClient);
       spyOn(http, 'get').and.returnValue(mockResponse);
+      service.getAllClients().subscribe();
+
       service.searchClient('').subscribe((data) => {
         expect(data).toEqual(mockClient);
       });
@@ -55,12 +57,4 @@ describe('ClientsService', () => {
       });
     });
   });
-
-  // it('return empty array if error', () => {
-  //   TestBed.runInInjectionContext(() => {
-  //     spyOn(http, 'get').and.throwError('error');
-  //     const result = service.getAllClients();
-  //     expect(result.value()).toEqual([]);
-  //   });
-  // });
 });
