@@ -2,13 +2,13 @@
 <form [formGroup]="searchForm">
   <input type="search" formControlName="search" placeholder="Search Client" />
 </form>
-@if (clients$.hasValue() && clients$.value().length > 0) {
+@let clientAviable = clients$.value(); @if (clientAviable.length > 0) {
 <div role="list">
   <div>
     <span>NDG</span>
     <span>Clients</span>
   </div>
-  @for (item of clients$.value(); track $index) {
+  @for (item of clientAviable; track $index) {
   <div>
     <span>{{ item.ndg }}</span>
     <span>{{ item.name }}</span>

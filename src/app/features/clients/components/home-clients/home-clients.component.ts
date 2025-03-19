@@ -15,6 +15,7 @@ export class HomeClientsComponent implements OnInit {
   #clientsService = inject(ClientsService);
   clients$ = rxResource({
     loader: () => this.#clientsService.getAllClients(),
+    defaultValue: [],
   });
   readonly #fb = inject(FormBuilder);
 
