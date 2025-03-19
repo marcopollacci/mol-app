@@ -23,9 +23,11 @@ export class QueryDBHelper {
       `;
   }
 
-  async getClient(name: string) {
-    return await this
-      .#neonObj`SELECT ndg, client_name as name FROM clients WHERE lower(client_name) = lower(${name});`;
+  async getClient(search: string) {
+    return await this.#neonObj(
+      `SELECT ndg, client_name as name FROM clients WHERE lower(client_name) LIKE lower($1) OR CAST(ndg AS TEXT) LIKE $1;`,
+      [`%${search}%`]
+    );
   }
 
   async getOperations() {

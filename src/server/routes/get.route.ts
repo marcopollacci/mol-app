@@ -38,11 +38,11 @@ router.use('/client/findAll', async (_req, res) => {
   res.json(results);
 });
 
-router.use('/client/:name', async (req, res) => {
+router.use('/client/:search', async (req, res) => {
   let status = 200;
   let results;
   try {
-    const result = await connectionDBNeon.getClient(req.params.name);
+    const result = await connectionDBNeon.getClient(req.params.search);
     results = result;
   } catch (error) {
     console.log('🚀 ~ router.use ~ error:', error);

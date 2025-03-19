@@ -1,5 +1,8 @@
 <h2>Clients Aviable</h2>
-@if (clients$.hasValue()) {
+<form [formGroup]="searchForm">
+  <input type="search" formControlName="search" placeholder="Search Client" />
+</form>
+@if (clients$.hasValue() && clients$.value().length > 0) {
 <div role="list">
   <div>
     <span>NDG</span>
@@ -12,4 +15,6 @@
   </div>
   }
 </div>
+} @else {
+<p>No clients found</p>
 }
