@@ -2,13 +2,13 @@
 @if (clients$.hasValue()) {
 <div role="list">
   <div>
-    <p>NDG</p>
-    <p>Clients</p>
+    <span>NDG</span>
+    <span>Clients</span>
   </div>
   @for (item of clients$.value(); track $index) {
   <div>
-    <p>{{ item.ndg }}</p>
-    <p>{{ item.name }}</p>
+    <span>{{ item.ndg }}</span>
+    <span>{{ item.name }}</span>
   </div>
   }
 </div>
