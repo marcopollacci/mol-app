@@ -40,5 +40,5 @@
   },
   "typescript.tsdk": "node_modules/typescript/lib",
   "workbench.editor.tabSizing": "shrink",
-  "conventionalCommits.scopes": ["project", "api"]
+  "conventionalCommits.scopes": ["project", "api", "operations", "clients"]
 }

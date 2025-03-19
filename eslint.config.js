@@ -3,6 +3,7 @@ const eslint = require("@eslint/js");
 const tseslint = require("typescript-eslint");
 const angular = require("angular-eslint");
 const boundaries = require("eslint-plugin-boundaries");
+const { from } = require("rxjs");
 
 module.exports = tseslint.config(
   {
@@ -10,6 +11,7 @@ module.exports = tseslint.config(
     files: ["**/*.ts"],
     extends: [
       eslint.configs.recommended,
+      // @ts-ignore
       boundaries.configs.strict,
       ...tseslint.configs.recommended,
       ...tseslint.configs.stylistic,
@@ -43,6 +45,14 @@ module.exports = tseslint.config(
               from: "core/components",
               allow: ["core/**", "common/**"],
             },
+            {
+              from: "features/operations",
+              allow: ["features/operations/**", "common/**"],
+            },
+            {
+              from: "features/clients",
+              allow: ["features/clients/**", "common/**"],
+            },
           ],
         },
       ],
@@ -65,6 +75,14 @@ module.exports = tseslint.config(
         {
           type: "common/services",
           pattern: "src/app/common/services",
+        },
+        {
+          type: "features/operations",
+          pattern: "src/app/features/operations",
+        },
+        {
+          type: "features/clients",
+          pattern: "src/app/features/clients",
         },
       ],
     },

@@ -19,7 +19,8 @@
     "module": "ES2022",
     "paths": {
       "@common/*": ["./src/app/common/*"],
-      "@core/*": ["./src/app/core/*"]
+      "@core/*": ["./src/app/core/*"],
+      "@features/*": ["./src/app/features/*"]
     }
   },
   "angularCompilerOptions": {

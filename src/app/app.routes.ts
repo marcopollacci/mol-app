@@ -9,6 +9,18 @@ export const routes: Routes = [
       ),
   },
   {
+    path: 'operations',
+    children: [
+      {
+        path: '',
+        loadComponent: () =>
+          import(
+            './features/operations/components/home-operations/home-operations.component'
+          ).then((m) => m.HomeOperationsComponent),
+      },
+    ],
+  },
+  {
     path: '**',
     redirectTo: '',
   },
