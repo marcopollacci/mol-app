@@ -10,7 +10,6 @@ export class QueryDBHelper {
     }
 
     this.#neonObj = neon(database_url);
-    this.setSchema();
     QueryDBHelper.#istance = this;
   }
 
@@ -34,7 +33,7 @@ export class QueryDBHelper {
       .#neonObj`SELECT id as operation_id, name as type FROM operation_type`;
   }
 
-  private async setSchema() {
-    this.#neonObj`SET schema 'mol';`;
+  async setSchema() {
+    await this.#neonObj`SET schema 'mol';`;
   }
 }

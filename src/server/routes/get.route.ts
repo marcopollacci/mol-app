@@ -3,6 +3,7 @@ import { QueryDBHelper } from '../helpers/querydb.helper';
 
 const router = express.Router();
 const connectionDBNeon = new QueryDBHelper(process.env['NEON_DATABASE_URL']!);
+await connectionDBNeon.setSchema();
 
 router.use('/up-neon', async (_req, res) => {
   let status = 200;
@@ -10,6 +11,7 @@ router.use('/up-neon', async (_req, res) => {
   try {
     await connectionDBNeon.getVersion();
   } catch (error) {
+    console.log('🚀 ~ router.use ~ error:', error);
     status = 500;
     message = 'KO';
   }
@@ -27,6 +29,7 @@ router.use('/client/findAll', async (_req, res) => {
     const result = await connectionDBNeon.getClients();
     results = result;
   } catch (error) {
+    console.log('🚀 ~ router.use ~ error:', error);
     status = 500;
     results = 'KO';
   }
