@@ -1,0 +1,44 @@
+{
+  "workbench.colorCustomizations": {
+    "activityBar.activeBackground": "#a2225b",
+    "activityBar.background": "#a2225b",
+    "activityBar.foreground": "#e7e7e7",
+    "activityBar.inactiveForeground": "#e7e7e799",
+    "activityBarBadge.background": "#599e21",
+    "activityBarBadge.foreground": "#e7e7e7",
+    "commandCenter.border": "#e7e7e799",
+    "sash.hoverBorder": "#a2225b",
+    "statusBar.background": "#781943",
+    "statusBar.foreground": "#e7e7e7",
+    "statusBarItem.hoverBackground": "#a2225b",
+    "statusBarItem.remoteBackground": "#781943",
+    "statusBarItem.remoteForeground": "#e7e7e7",
+    "titleBar.activeBackground": "#781943",
+    "titleBar.activeForeground": "#e7e7e7",
+    "titleBar.inactiveBackground": "#78194399",
+    "titleBar.inactiveForeground": "#e7e7e799"
+  },
+  "peacock.color": "#781943",
+  "editor.tabSize": 2,
+  "editor.detectIndentation": false,
+  "editor.insertSpaces": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "explicit",
+    "source.fixAll": "always"
+  },
+  "files.eol": "\n",
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[scss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "workbench.editor.tabSizing": "shrink",
+  "conventionalCommits.scopes": ["project"]
+}
