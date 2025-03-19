@@ -25,7 +25,6 @@ export class QueryDBHelper {
   }
 
   async getClient(name: string) {
-    console.log('🚀 ~ QueryDBHelper ~ getClient ~ name:', name);
     return await this
       .#neonObj`SELECT ndg, client_name as name FROM clients WHERE lower(client_name) = lower(${name});`;
   }
