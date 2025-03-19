@@ -6,4 +6,5 @@ import { inject, Injectable } from '@angular/core';
 })
 export class CommonService {
   readonly http = inject(HttpClient);
+  readonly basePath = '/api';
 }

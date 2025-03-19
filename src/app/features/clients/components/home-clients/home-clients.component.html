@@ -1,1 +1,15 @@
-<p>home-clients works!</p>
+<h2>Clients Aviable</h2>
+@if (clients$.hasValue()) {
+<div role="list">
+  <div>
+    <p>NDG</p>
+    <p>Clients</p>
+  </div>
+  @for (item of clients$.value(); track $index) {
+  <div>
+    <p>{{ item.ndg }}</p>
+    <p>{{ item.name }}</p>
+  </div>
+  }
+</div>
+}

@@ -73,8 +73,8 @@ module.exports = tseslint.config(
           pattern: "src/app/core/services",
         },
         {
-          type: "common/services",
-          pattern: "src/app/common/services",
+          type: "common",
+          pattern: "src/app/common",
         },
         {
           type: "features/operations",

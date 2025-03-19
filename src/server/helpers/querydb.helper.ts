@@ -19,7 +19,7 @@ export class QueryDBHelper {
 
   async getClients() {
     return await this.#neonObj`
-      'SELECT ndg, client_name as name FROM clients'
+      SELECT ndg, client_name as name FROM clients
       `;
   }
 

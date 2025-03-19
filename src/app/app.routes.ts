@@ -21,6 +21,18 @@ export const routes: Routes = [
     ],
   },
   {
+    path: 'clients',
+    children: [
+      {
+        path: '',
+        loadComponent: () =>
+          import(
+            './features/clients/components/home-clients/home-clients.component'
+          ).then((m) => m.HomeClientsComponent),
+      },
+    ],
+  },
+  {
     path: '**',
     redirectTo: '',
   },
