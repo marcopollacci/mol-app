@@ -4,15 +4,18 @@ import {
   isMainModule,
   writeResponseToNodeResponse,
 } from '@angular/ssr/node';
+import 'dotenv/config';
 import express from 'express';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { QueryDBHelper } from './helpers/querydb.helper';
 
 const serverDistFolder = dirname(fileURLToPath(import.meta.url));
 const browserDistFolder = resolve(serverDistFolder, '../browser');
 
 const app = express();
 const angularApp = new AngularNodeAppEngine();
+const connectionDBNeon = new QueryDBHelper(process.env['NEON_DATABASE_URL']!);
 
 /**
  * Example Express Rest API endpoints can be defined here.
@@ -34,8 +37,70 @@ app.use(
     maxAge: '1y',
     index: false,
     redirect: false,
-  }),
+  })
 );
+
+app.use('/api/up-neon', async (_req, res) => {
+  let status = 200;
+  let message = 'OK';
+  try {
+    await connectionDBNeon.getVersion();
+  } catch (error) {
+    status = 500;
+    message = 'KO';
+  }
+
+  res.status(status);
+  res.json({
+    message,
+  });
+});
+
+app.use('/api/client/findAll', async (_req, res) => {
+  let status = 200;
+  let results;
+  try {
+    const result = await connectionDBNeon.getClients();
+    results = result;
+  } catch (error) {
+    status = 500;
+    results = 'KO';
+  }
+
+  res.status(status);
+  res.json(results);
+});
+
+app.use('/api/client/:name', async (req, res) => {
+  let status = 200;
+  let results;
+  try {
+    const result = await connectionDBNeon.getClient(req.params.name);
+    results = result;
+  } catch (error) {
+    console.log('🚀 ~ app.use ~ error:', error);
+    status = 500;
+    results = 'KO';
+  }
+
+  res.status(status);
+  res.json(results);
+});
+
+app.use('/api/operations/findAll', async (_req, res) => {
+  let status = 200;
+  let results;
+  try {
+    const result = await connectionDBNeon.getOperations();
+    results = result;
+  } catch (error) {
+    status = 500;
+    results = 'KO';
+  }
+
+  res.status(status);
+  res.json(results);
+});
 
 /**
  * Handle all other requests by rendering the Angular application.
@@ -44,7 +109,7 @@ app.use('/**', (req, res, next) => {
   angularApp
     .handle(req)
     .then((response) =>
-      response ? writeResponseToNodeResponse(response, res) : next(),
+      response ? writeResponseToNodeResponse(response, res) : next()
     )
     .catch(next);
 });
