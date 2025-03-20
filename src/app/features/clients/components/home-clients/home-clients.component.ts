@@ -31,8 +31,6 @@ export class HomeClientsComponent implements OnInit {
           this.#clientsService.searchClient(search || '')
         )
       )
-      .subscribe((data: ClientInterface[]) => {
-        this.clients$.set(data);
-      });
+      .subscribe((data: ClientInterface[]) => this.clients$.set(data));
   }
 }

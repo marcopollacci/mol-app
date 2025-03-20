@@ -25,10 +25,6 @@ export class ClientsService extends CommonService {
     }
     return this.http
       .get<ClientInterface[]>(`${this.basePath}/client/${search}`)
-      .pipe(
-        catchError(() => {
-          return of([]);
-        })
-      );
+      .pipe(catchError(() => of([])));
   }
 }
