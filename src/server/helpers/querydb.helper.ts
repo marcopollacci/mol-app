@@ -24,7 +24,7 @@ export class QueryDBHelper {
   }
 
   async getClient(search: string) {
-    return await this.#neonObj(
+    return await this.#neonObj.query(
       `SELECT ndg, client_name as name FROM clients WHERE lower(client_name) LIKE lower($1) OR CAST(ndg AS TEXT) LIKE $1;`,
       [`%${search}%`]
     );
